@@ -46,8 +46,8 @@ class pw():
 		try:
 			csv_file = csv.reader(open(write_file, "r"))
 			for row in csv_file:
-			if site == row[0]:
-				return(row[1])
+				if site == row[0]:
+					return(row[1])
 		except FileNotFoundError as e:
 			return "Please set a password first"
 		
