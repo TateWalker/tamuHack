@@ -25,6 +25,8 @@ using System.Windows.Forms;
 using System.IO;
 using RestSharp;
 using Newtonsoft.Json.Linq;
+using System.Timers;
+using System.Threading;
 
 
 namespace PasswordManager
@@ -37,6 +39,21 @@ namespace PasswordManager
         }
 
         IRestResponse response;
+
+        /*
+        //function to copy new or retrieved password to clipboard
+        public String SwapClipboardHtmlText(String replacementHtmlText)
+        {
+            String returnHtmlText = null;
+            if (Clipboard.ContainsText(TextDataFormat.Html))
+            {
+                returnHtmlText = Clipboard.GetText(TextDataFormat.Html);
+                Clipboard.SetText(replacementHtmlText, TextDataFormat.Html);
+            }
+            return returnHtmlText;
+        }
+        */
+
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
@@ -60,7 +77,7 @@ namespace PasswordManager
                 string strWord = txtWord.Text;
 
                 // sending request
-                var client = new RestClient("http://10.231.154.214:5000/set-password?website=" + strNewWebsite + "&base=" + strWord + "&color=" + strColor);
+                var client = new RestClient("http://10.231.5.223:5000/set-password?website=" + strNewWebsite + "&base=" + strWord + "&color=" + strColor);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Postman-Token", "340ea6d0-e6bd-c8ce-ccfb-7409970fd14e");
                 request.AddHeader("Cache-Control", "no-cache");
@@ -69,10 +86,14 @@ namespace PasswordManager
 
                 var obj = JObject.Parse(response.Content);
                 var password = (string)obj["password"];
-                //Console.WriteLine(o.password);
 
-                txtPassword.Text = password;
+                txtPassword.Text = password + "   -   Password has been copied to Clipboard";
                 txtWebPassword.Text = strNewWebsite;
+
+                //copy password onto clipboard
+                Clipboard.SetText(password);
+                //txtClipboard.Visible = true;
+
 
                 //Clear fields
                 txtNewWebsite.Clear();
@@ -96,12 +117,12 @@ namespace PasswordManager
                     string x = lineOfContents[color];
                     cboColor.Items.Add(lineOfContents[color]);
                     color = 0;
-
                 }
-                
-
             }
         }
+
+
+
 
         private void btnRetrievePassword_Click(object sender, EventArgs e)
         {
@@ -117,7 +138,7 @@ namespace PasswordManager
                 // Website text box is filled in
                 string strWebsite = txtWebsite.Text;
 
-                var client = new RestClient("http://10.231.154.214:5000/get-password?website=" + strWebsite);
+                var client = new RestClient("http://10.231.5.223:5000/get-password?website=" + strWebsite);
                 var request = new RestRequest(Method.GET);
                 request.AddHeader("Postman-Token", "340ea6d0-e6bd-c8ce-ccfb-7409970fd14e");
                 request.AddHeader("Cache-Control", "no-cache");
@@ -128,26 +149,30 @@ namespace PasswordManager
                 var password = (string)obj["password"];
                 //Console.WriteLine(o.password);
 
-                txtPassword.Text = password;
+                if (password != "Please set a password first")
+                {
+                    txtPassword.Text = password + "   -   Password has been copied to Clipboard";
+                }
+                else
+                {
+                    txtPassword.Text = password;
+                }
+
                 txtWebPassword.Text = strWebsite;
+
+                //copy password onto clipboard
+                Clipboard.SetText(password);
+                //txtClipboard.Visible = true;
+                
 
                 //clear website field
                 txtWebsite.Clear();
-
-                /*
-                    public String SwapClipboardHtmlText(String replacementHtmlText)
-                    {
-                    String returnHtmlText = null;
-                    if (Clipboard.ContainsText(TextDataFormat.Html))
-                    {
-                    returnHtmlText = Clipboard.GetText(TextDataFormat.Html);
-                    Clipboard.SetText(replacementHtmlText, TextDataFormat.Html);
-                    }
-                    return returnHtmlText;
-                    */
+   
             }
     
         }
+
+
 
         // things that will happen when the form loads
         // populate the combo box with random 10 colors
@@ -171,5 +196,6 @@ namespace PasswordManager
 
             }
         }
+
     }
 }

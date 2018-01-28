@@ -43,6 +43,7 @@
             this.btnRetrievePassword = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtWebPassword = new System.Windows.Forms.TextBox();
+            this.txtClipboard = new System.Windows.Forms.TextBox();
             this.gboxNewPassword.SuspendLayout();
             this.grpboxRetrievePassword.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +71,7 @@
             // txtWord
             // 
             this.txtWord.Location = new System.Drawing.Point(195, 174);
-            this.txtWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWord.Margin = new System.Windows.Forms.Padding(4);
             this.txtWord.Name = "txtWord";
             this.txtWord.Size = new System.Drawing.Size(132, 23);
             this.txtWord.TabIndex = 3;
@@ -89,7 +90,7 @@
             // txtNewWebsite
             // 
             this.txtNewWebsite.Location = new System.Drawing.Point(195, 81);
-            this.txtNewWebsite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNewWebsite.Margin = new System.Windows.Forms.Padding(4);
             this.txtNewWebsite.Name = "txtNewWebsite";
             this.txtNewWebsite.Size = new System.Drawing.Size(220, 23);
             this.txtNewWebsite.TabIndex = 1;
@@ -99,7 +100,7 @@
             this.btnGenerate.BackColor = System.Drawing.Color.Silver;
             this.btnGenerate.ForeColor = System.Drawing.Color.Black;
             this.btnGenerate.Location = new System.Drawing.Point(71, 198);
-            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(116, 39);
             this.btnGenerate.TabIndex = 4;
@@ -113,7 +114,7 @@
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
             this.btnClose.Location = new System.Drawing.Point(284, 198);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(116, 39);
             this.btnClose.TabIndex = 5;
@@ -125,7 +126,7 @@
             this.cboColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboColor.FormattingEnabled = true;
             this.cboColor.Location = new System.Drawing.Point(195, 127);
-            this.cboColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboColor.Margin = new System.Windows.Forms.Padding(4);
             this.cboColor.Name = "cboColor";
             this.cboColor.Size = new System.Drawing.Size(167, 24);
             this.cboColor.TabIndex = 2;
@@ -133,7 +134,7 @@
             // txtWebsite
             // 
             this.txtWebsite.Location = new System.Drawing.Point(173, 71);
-            this.txtWebsite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWebsite.Margin = new System.Windows.Forms.Padding(4);
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(184, 23);
             this.txtWebsite.TabIndex = 6;
@@ -155,9 +156,9 @@
             this.gboxNewPassword.Controls.Add(this.btnClose);
             this.gboxNewPassword.ForeColor = System.Drawing.Color.White;
             this.gboxNewPassword.Location = new System.Drawing.Point(16, 28);
-            this.gboxNewPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gboxNewPassword.Margin = new System.Windows.Forms.Padding(4);
             this.gboxNewPassword.Name = "gboxNewPassword";
-            this.gboxNewPassword.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gboxNewPassword.Padding = new System.Windows.Forms.Padding(4);
             this.gboxNewPassword.Size = new System.Drawing.Size(451, 274);
             this.gboxNewPassword.TabIndex = 8;
             this.gboxNewPassword.TabStop = false;
@@ -171,9 +172,9 @@
             this.grpboxRetrievePassword.Controls.Add(this.txtWebsite);
             this.grpboxRetrievePassword.ForeColor = System.Drawing.Color.White;
             this.grpboxRetrievePassword.Location = new System.Drawing.Point(497, 28);
-            this.grpboxRetrievePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpboxRetrievePassword.Margin = new System.Windows.Forms.Padding(4);
             this.grpboxRetrievePassword.Name = "grpboxRetrievePassword";
-            this.grpboxRetrievePassword.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpboxRetrievePassword.Padding = new System.Windows.Forms.Padding(4);
             this.grpboxRetrievePassword.Size = new System.Drawing.Size(417, 274);
             this.grpboxRetrievePassword.TabIndex = 9;
             this.grpboxRetrievePassword.TabStop = false;
@@ -184,7 +185,7 @@
             this.btnRetrievePassword.BackColor = System.Drawing.Color.Silver;
             this.btnRetrievePassword.ForeColor = System.Drawing.Color.Black;
             this.btnRetrievePassword.Location = new System.Drawing.Point(157, 166);
-            this.btnRetrievePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRetrievePassword.Margin = new System.Windows.Forms.Padding(4);
             this.btnRetrievePassword.Name = "btnRetrievePassword";
             this.btnRetrievePassword.Size = new System.Drawing.Size(136, 53);
             this.btnRetrievePassword.TabIndex = 8;
@@ -194,21 +195,34 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(411, 311);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Location = new System.Drawing.Point(325, 311);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.ReadOnly = true;
-            this.txtPassword.Size = new System.Drawing.Size(312, 23);
+            this.txtPassword.Size = new System.Drawing.Size(404, 23);
             this.txtPassword.TabIndex = 6;
             // 
             // txtWebPassword
             // 
-            this.txtWebPassword.Location = new System.Drawing.Point(253, 311);
-            this.txtWebPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWebPassword.Location = new System.Drawing.Point(169, 311);
+            this.txtWebPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtWebPassword.Name = "txtWebPassword";
             this.txtWebPassword.ReadOnly = true;
             this.txtWebPassword.Size = new System.Drawing.Size(148, 23);
             this.txtWebPassword.TabIndex = 10;
+            // 
+            // txtClipboard
+            // 
+            this.txtClipboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtClipboard.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtClipboard.ForeColor = System.Drawing.Color.White;
+            this.txtClipboard.Location = new System.Drawing.Point(779, 314);
+            this.txtClipboard.Name = "txtClipboard";
+            this.txtClipboard.ReadOnly = true;
+            this.txtClipboard.Size = new System.Drawing.Size(140, 16);
+            this.txtClipboard.TabIndex = 11;
+            this.txtClipboard.Text = "Password copied to clipboard!";
+            this.txtClipboard.Visible = false;
             // 
             // frmPasswordMgr
             // 
@@ -217,6 +231,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(931, 351);
+            this.Controls.Add(this.txtClipboard);
             this.Controls.Add(this.txtWebPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.cboColor);
@@ -229,7 +244,7 @@
             this.Controls.Add(this.grpboxRetrievePassword);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPasswordMgr";
             this.Text = "Password Manager";
             this.Load += new System.EventHandler(this.frmPasswordMgr_Load);
@@ -258,6 +273,7 @@
         private System.Windows.Forms.Button btnRetrievePassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtWebPassword;
+        private System.Windows.Forms.TextBox txtClipboard;
     }
 }
 
