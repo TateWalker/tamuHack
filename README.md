@@ -6,6 +6,6 @@ Small application to encrypt passwords and store in database online. Consists of
   * You must get the ethernet IP from your server machine and change the target URLs in the C# program to this address.
   * Ethernet IP value will change everytime you connect to the wifi.
 
-## Venmo Donations (Dev Costs, Coffee, etc.):
+## Venmo Donations (Development costs, Coffee, etc.):
   * @Tate-Walker
   * @Kayla_Barden
