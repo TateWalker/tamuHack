@@ -46,3 +46,4 @@ api.add_resource(GetPassword, '/get-password')
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0') #run on local ip. C# needs to connect to new ip everytime
+    #delete host parameter to run on own server
