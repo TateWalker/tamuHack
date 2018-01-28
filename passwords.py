@@ -43,7 +43,10 @@ class pw():
 
 	def fetchPass(self,site):
 		write_file = 'pwStorage.csv'
-		csv_file = csv.reader(open(write_file, "r"))
+		try:
+			csv_file = csv.reader(open(write_file, "r"))
+		except FileNotFoundError as e:
+			return "Please set a password first"
 		for row in csv_file:
 			if site == row[0]:
 				return(row[1])
