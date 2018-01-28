@@ -1,2 +1,0 @@
-# tamuHack
-TAMUHack Repository
