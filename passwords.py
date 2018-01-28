@@ -2,18 +2,16 @@
 import random
 from colour import Color
 import os.path
-
+import csv
 
 class pw():
 	def __init__(self):
 		self.fake = 0
 
-
 	def randUp(self,s):
 		def randupper(c):
 			return random.random() > 0.5 and c.upper() or c
 		return ''.join(map(randupper, s))
-
 
 	def formPass(self,color,base):
 		passwordBase = str(base)
@@ -27,6 +25,12 @@ class pw():
 		random.shuffle(newPassword)
 		return ''.join(newPassword)
 
+	def fetchPass(self,site):
+		write_file = 'pwStorage.csv'
+		csv_file = csv.reader(open(write_file, "r"))
+		for row in csv_file:
+			if site == row[0]:
+				return(row[1])
 
 	def savePass(self,site,password):
 		cwd = os.getcwd()
@@ -35,9 +39,22 @@ class pw():
 		else: appender = 'w'
 
 		with open(write_file, appender) as output:
-			if appender == 'w':
+			if appender == 'w':	#creates new file with header
 				output.write("Site, Password\n" + site + ',' + password + "\n")
-			else: output.write(site + ',' + password + "\n")
+			else:	#appends to csv file
+				update = False
+				r = csv.reader(open(write_file))
+				lines = [l for l in r]
+				for line in lines:	#check if website is already present
+					if site == line[0]:
+						update = True
+						print("here")
+						line[1] = password
+						writer = csv.writer(open(write_file, 'w'))
+						writer.writerows(lines)
+				if update == False: 
+					print("HERE")
+					output.write(site + ',' + password + "\n")
 
 
 
